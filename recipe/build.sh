@@ -26,6 +26,11 @@ fi
 # https://github.com/joyent/libuv/issues/1200
 LIBTOOLIZE=libtoolize sh ./autogen.sh
 
+if [ "${target_platform}" == "linux-aarch64" ]; then
+echo "Setting __QEMU__=1"
+export CPPFLAGS="-D__QEMU__=1 $CPPFLAGS"
+fi
+
 ./configure \
    --disable-dependency-tracking \
    --disable-silent-rules \
