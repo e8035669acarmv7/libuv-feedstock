@@ -9,6 +9,7 @@ source:
   sha256: 9e27825a55279de69a7c43e42d509fd1337c9bece2547c761e91a1592e91cc4d
   patches:
     - test-udp-join-1.31.patch  # [osx]
+    - PR-3515-fix-install-locations.patch
 
 build:
   number: 0
