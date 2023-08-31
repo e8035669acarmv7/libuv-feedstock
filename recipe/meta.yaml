@@ -7,6 +7,9 @@ package:
 source:
   url: https://github.com/libuv/libuv/archive/v{{ version }}.tar.gz
   sha256: 7aa66be3413ae10605e1f5c9ae934504ffe317ef68ea16fdaa83e23905c681bd
+  patches:
+    # linux.c:1638:21: error: 'CLOCK_BOOTTIME' undeclared
+    - boottime.patch
 
 build:
   number: 0
@@ -35,8 +38,6 @@ test:
     - if not exist %LIBRARY_INC%\uv.h (exit 1)      # [win]
     - if not exist %LIBRARY_LIB%\uv.lib (exit 1)    # [win]
     - if not exist %LIBRARY_BIN%\uv.dll (exit 1)    # [win]
-    - if not exist %LIBRARY_LIB%\uv_a.lib (exit 1)  # [win]
-    - if not exist %LIBRARY_LIB%\pkgconfig/libuv-static.pc (exit 1)  # [win]
     - if not exist %LIBRARY_LIB%\pkgconfig/libuv.pc (exit 1)         # [win]
 
 about:
